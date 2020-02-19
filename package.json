@@ -1,0 +1,19 @@
+{
+  "name": "vue-learn",
+  "version": "1.0.0",
+  "description": "我的vue学",
+  "main": "vue.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/94chenyuhui/vue-learn.git"
+  },
+  "author": "陈宇辉",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/94chenyuhui/vue-learn/issues"
+  },
+  "homepage": "https://github.com/94chenyuhui/vue-learn#readme"
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(i,index) in xunfan">
+					{{index}}{{i}}
+				</li>
+			</ul>
+			<ul>
+				<li v-for="(i,index) in shuzupaixus">
+					{{index}}{{i.name}}-{{i.age}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					xunFan:[12,55,93,6,78,51,36],
+					shuzu:[
+						{name:"陈宇辉",age:25},
+						{name:"孟丽娟",age:24},
+						{name:"陈玉福",age:32},
+						{name:"刘德华",age:55},
+						{name:"范冰冰",age:45},
+					]
+				},
+				 computed:{
+					xunfan:function(){
+						return this.xunFan.sort(paixu);
+					},
+					shuzupaixus:function(){
+						return shuzupaixu(this.shuzu,"age")
+					}
+				 }
+				
+			});
+			
+			//简单循环排序
+			function paixu(a,b){
+				return a-b;
+			}
+			//数组循环排序
+			function shuzupaixu(array,key){
+				return array.sort(function(a,b){
+					var x=a[key];
+					var y=b[key];
+					return ((x<y)?-1:((x>y)?1:0))
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			本场比赛得分{{fenshu}}
+			<br>
+			<button type="button" v-on:click="jiafen">加分</button>
+			<button type="button" v-on:click="jianfen">减分</button>
+			<br>
+			<input type="text" name="" id="" value="" @keyup.13="enter" v-model="jiafens"/>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					fenshu:0,
+					jiafens:0
+				},
+				methods:{
+					jiafen:function(){
+						this.fenshu++;
+					},
+					jianfen:function(){
+						this.fenshu--;
+					},
+					enter:function(){
+						this.fenshu=this.fenshu + parseInt(this.jiafens)
+					}
+				}
+			});
+			
+			/*
+			v-on 就是监听事件，监听DOM事件来触发一些javascript代码
+			v-on 还有一种简单的写法，就是用@代替。
+			除了绑定click之外，我们还可以绑定其它事件,比如键盘回车事件v-on:keyup.enter,可以根据键值表来定义按下那个键来触发事件
+			*/
+		</script>
+	</body>
+</html>
