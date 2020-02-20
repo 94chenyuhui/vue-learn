@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+		<style type="text/css">
+			table tr td{
+				border: 1px solid gray;
+				padding: 10px;
+			}
+			table{
+				width: 800px;
+				table-layout: fixed;
+				border-collapse:collapse ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			
+			
+			<table align="center">
+				<tr>
+					<td>视图类型</td>
+					<td>输入数据</td>
+					<td>绑定VUE上的数值</td>
+				</tr>
+				<tr>
+					<td>单行文本</td>
+					<td>
+						<p>原始数据双向绑定</p><input v-model="input" placeholder="输入数据"/>
+						<p>数据懒加载，输入框失去焦点后，在更改数据.lazy</p><input v-model.lazy="input" placeholder="输入数据"/>
+						<p>输入字符串转为数字.number</p><input v-model.number="input" placeholder="输入数据"/>
+						<p>数据去掉收尾空格修饰符.trim</p><input v-model.trim="input" placeholder="输入数据"/>
+					</td>
+					<td><p>{{input}}</p></td>
+				</tr>
+				<tr>
+					<td>多行文本</td>
+					<td><textarea v-model="textarea" placeholder="输入数据">
+						
+					</textarea></td>
+					<td><p>{{textarea}}</p></td>
+				</tr>
+				<tr>
+					<td>单个复选框</td>
+					<td><input v-model="checked" id="" type="checkbox"/>{{checked}}</td>
+					<td><p>{{checked}}</p></td>
+				</tr>
+				<tr>
+					<td>多个复选框</td>
+					<td>
+						<input v-model="checkedes" type="checkbox" id="" value="盖伦"/>盖伦
+						<input v-model="checkedes" type="checkbox" id="" value="火男"/>火男
+						<input v-model="checkedes" type="checkbox" id="" value="天使"/>天使
+						<input v-model="checkedes" type="checkbox" id="" value="德莱文"/>德莱文
+						<input v-model="checkedes" type="checkbox" id="" value="日女"/>日女
+					</td>
+					<td><p>{{checkedes}}</p></td>
+					
+				</tr>
+				<tr>
+					<td>单选按钮</td>
+					<td>
+						<input  value="男" v-model="radio" id="one" type="radio" />
+						<label for="one">男</label>
+						<br>
+						<input type="radio"  value="女" id="two" v-model="radio"/>
+						<label for="two">女</label>
+					</td>
+					<td><p>{{radio}}</p></td>
+				</tr>
+				<tr>
+					<td>单选选择框</td>
+					<td>
+						<select v-model="selected" size="5">
+							<option value ="">请选择</option>
+							<option >盖伦</option>
+							<option >欧巴马</option>
+							<option >火男</option>
+							<option >冰女</option>
+						</select>
+					</td>
+					<td><p>{{selected}}</p></td>
+				</tr>
+				<tr>
+					<td>多选选择框</td>
+					<td>
+						(通过ctrl或者shift进行多选)<br>
+						<select v-model="selecteds" multiple="" size="5">
+							<option value ="">请选择</option>
+							<option >盖伦</option>
+							<option >欧巴马</option>
+							<option >火男</option>
+							<option >冰女</option>
+							
+						</select>
+					</td>
+					<td><p>{{selecteds}}</p></td>
+				</tr>
+				
+				
+				<tr>
+					<td>单个复选框</td>
+					<td>
+						默认值是true或者false,也可以修改为自定义的值<br>
+						<input type="checkbox" v-model="toggle" id="" true-value="是" false-value="否" />
+					</td>
+					<td><p>{{toggle}}</p></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					input:"",
+					textarea:"",
+					checked:false,
+					checkedes:[],
+					radio:"",
+					selected:"",
+					selecteds:"",
+					toggle:''
+					
+					
+				}
+			});
+			
+			/*
+			v-model指令，我理解为绑定数据源。就是把数据绑定在特定的表单元素上，可以很容易的实现双向数据绑定。
+			
+			.lazy：取代 imput 监听 change 事件。
+			.number：输入字符串转为数字。
+			.trim：输入去掉首尾空格。
+			*/
+		</script>
+	</body>
+</html>

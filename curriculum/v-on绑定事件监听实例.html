@@ -40,6 +40,14 @@
 			v-on 就是监听事件，监听DOM事件来触发一些javascript代码
 			v-on 还有一种简单的写法，就是用@代替。
 			除了绑定click之外，我们还可以绑定其它事件,比如键盘回车事件v-on:keyup.enter,可以根据键值表来定义按下那个键来触发事件
+			
+			v-on:click.stop="name"  阻止事件冒泡，事件冒泡到此就结束了
+			v-on:click.capture="name" 优先触发，事件冒泡过程中，优先触发当前绑定得事件
+			v-on:click.self="name" 	只有自己能触发，子元素冒泡过程，不触发当前元素绑定得事件
+			v-on:click.once=""name"  只能提交一次，
+			v-on:click.prevent="name"  阻止提交，阻止页面刷新
+			修饰符可以串联
+			例如：@click.stop.prevent 阻止冒充，也阻止提交
 			*/
 		</script>
 	</body>

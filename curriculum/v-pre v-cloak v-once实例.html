@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<p v-pre>并不会输出我们的message值，而是直接在网页中显示{{message}}</p>
+			<br>
+			<p v-cloak>{{none}}</p>
+			<br />
+			<p v-once>v-once渲染一次后的静态内容:{{once}}</p>
+			<p>正常渲染：{{once}}</p>
+			<input type="" name="" id="" value=""  v-model="once"/>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					message:"v-pre指令输出原始值",
+					none:"v-cloak：vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用",
+					once:"只渲染一次，渲染一次完成后视为静态内容，跳出以后的渲染过程"
+				}
+			})
+			
+			/*
+			v-cloak在开发中比较常用
+			v-cloak指令和CSS 规则一起用的时候，能够解决差值表达式闪烁的问题（即：可以隐藏未编译的标签直到实例准备完毕）
+			比如说，{{name}}这个内容，在网速很慢的情况下，一开始会直接显示{{name}}这个内容，等网络加载完成了，才会显示smyhvae。
+			那这个闪烁的问题该怎么解决呢？
+			解决办法是：通过v-cloak隐藏{{name}}这个内容，当加载完毕后，再显示出来。
+			
+			在样式表里设置：只要是有 v-cloak 属性的标签，我都让它隐藏。
+			直到 Vue实例化完毕以后，v-cloak 会自动消失，那么对应的css样式就会失去作用，最终将v-cloak中的内容呈现给用户 
+			*/
+		</script>
+	</body>
+</html>

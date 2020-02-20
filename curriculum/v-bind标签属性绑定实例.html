@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+		<style type="text/css">
+			.classA{
+				color: red;
+			}
+			.classB{
+				font-size: 150%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<img :src="imgSrc" >绑定图片
+			<p :style="{color:red,fontSize:size}">用对象绑定css样式</p>
+			<p :style="styles">用对象绑定css样式</p>
+			<p :class="{classA:isOK}">绑定class并判断<input type="checkbox" name="" id="" value="" v-model="isOK" />isOK={{isOK}}</p>
+			<p :class="{classA,classB}">绑定class多个class</p>
+			<p :class="isOK?classA:classB">绑定class中的三元表达式判断</p>
+			
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					imgSrc:"http://blogimages.jspang.com/blogtouxiang1.jpg",
+					styles:{
+						color:"green",
+						fontSize:"19px"
+					},
+					red:"red",
+					size:"33px",
+					isOK:"",
+					classA:"classA",
+					classB:"classB"
+				}
+			});
+			
+			
+			/*
+			vue中绑定属性不能使用-符合，例如font-size,在vue中不能正常使用，要改为fontSize,去掉-符合，下个怎么改为大写，就能正常使用
+			
+			v-bind可以绑定任何html的标签属性
+			*/
+		</script>
+	</body>
+</html>
