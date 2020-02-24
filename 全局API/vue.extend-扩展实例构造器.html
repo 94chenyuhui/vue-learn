@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<chenyuhui></chenyuhui>
+		<div id="chenyuhui">
+			
+		</div>
+		<div class="chenyuhui">
+			
+		</div>
+		<script type="text/javascript">
+			var chenyuhuis=Vue.extend({
+				template:'<p><a :href="chenyuhuiUrl">{{chenyuhuiName}}</a></p>',
+				
+				//<p><a :href="chenyuhuiUrl">{{chenyuhuiName}}</a></p>  注意符号""跟''，外面是""双引号，那么里面就得单引号''
+				data:function(){
+					return{
+						chenyuhuiName:"陈宇辉",
+						chenyuhuiUrl:"http://www.baidu.com"
+					}
+				}
+			});
+			new chenyuhuis().$mount("chenyuhui");//绑定到HTML标签
+			new chenyuhuis().$mount("#chenyuhui");//绑定到ID
+			new chenyuhuis().$mount(".chenyuhui");//绑定到ID
+			
+		</script>
+	</body>
+</html>

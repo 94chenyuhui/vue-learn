@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<h2>template的三种写法</h2>
+		<div id="app">
+			<!-- <p>{{message}}</p> 不知道为什么 在有模板的时候  不能正常使用 好像是正常现象 -->
+			<p>{{message}}</p>
+			<p>好好学习天天向上</p>
+		</div>
+		 <template id="demo2"><h3 style="color:red">二。我是template标签模板</h3></template>
+		<script type="x-template" id="demo3">
+			<h3 style="color:red">三.我是script标签模板</h3>
+		</script> 
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					message:"模板"
+				},
+				template:"#demo3",
+				/*`
+				<h3 style="color:red">一。我是选项模板</h3>
+				`*/
+			})
+			</script>
+			<!-- 一、直接写在选项里的模板
+			直接在构造器里的template选项后边编写。这种写法比较直观，但是如果模板html代码太多，不建议这么写。
+			
+			javascript代码：
+			
+			var app=new Vue({
+			     el:'#app',
+			     data:{
+			         message:'hello Vue!'
+			      },
+			     template:`
+			        <h1 style="color:red">我是选项模板</h1>
+			     `
+			})
+			这里需要注意的是模板的标识不是单引号和双引号，而是，就是Tab上面的`键。
+			
+			二、写在template标签里的模板
+			这种写法更像是在写HTML代码，就算不会写Vue的人，也可以制作页面。
+			
+			   <template id="demo2">
+			             <h2 style="color:red">我是template标签模板</h2>
+			    </template>
+			
+			    <script type="text/javascript">
+			        var app=new Vue({
+			            el:'#app',
+			            data:{
+			                message:'hello Vue!'
+			            },
+			            template:'#demo2'
+			        })
+			    </script>
+			三、写在script标签里的模板
+			这种写模板的方法，可以让模板文件从外部引入。
+			
+			<script type="x-template" id="demo3">
+			        <h2 style="color:red">我是script标签模板</h2>
+			    </script>
+			
+			    <script type="text/javascript">
+			        var app=new Vue({
+			            el:'#app',
+			            data:{
+			                message:'hello Vue!'
+			            },
+			            template:'#demo3'
+			        })
+			    </script> -->
+	</body>
+</html>
