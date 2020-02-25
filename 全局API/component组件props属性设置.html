@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 我们在写属性时经常会加入’-‘来进行分词，比如：，那这时我们在props里如果写成props:[‘mo-de’]是错误的，
+			 我们必须用小驼峰式写法props:[‘moDe’]。 
+			 因为这里有坑，所以还是少用-为好-->
+			<chenyuhui mo-de="孟丽娟"></chenyuhui>
+			<!-- 把构造器中data的值传递给组件 -->
+			<chenyuhui v-bind:mo-de="menglijuan"></chenyuhui>
+		</div>
+		<script type="text/javascript" >
+			var app=new Vue({
+				el:"#app",
+				data:{
+					menglijuan:'孟丽娟'
+				},
+				components:{
+					"chenyuhui":{
+						template:`<div style="color:red">陈宇辉跟{{moDe}}</div>`,
+						props:['moDe']
+					}
+				}
+			})
+			
+			/*
+			props选项就是设置和获取标签上的属性值的
+			
+			*/
+		</script>
+	</body>
+</html>

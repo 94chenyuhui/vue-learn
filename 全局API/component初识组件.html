@@ -9,15 +9,42 @@
 	</head>
 	<body>
 		<div id="app">
-			
+			<chenyuhui></chenyuhui>
+			<menglijuan></menglijuan>
+		</div>
+		<div id="ppd">
+			<chenyuhui></chenyuhui>
 		</div>
 		<script type="text/javascript">
+			//注册全局化组件
+			Vue.component('chenyuhui',{
+				template:`<div style="color:red">全局化组件注册的chenyuhui标签</div>`
+			})
+			
+			//注册局部组件
+			//需要注意的是，构造器里的components 是加s的，而全局注册是Vue.component不加s的。
 			var app=new Vue({
 				el:"#app",
 				data:{
 					
+				},
+				components:{
+					"menglijuan":{
+						template:`<div style="color:green">局部组件注册的menglijuan标签</div>`
+					}
 				}
+			});
+			var ppd=new Vue({
+				el:"#ppd"
 			})
+			
+			/*
+			其实组件就是制作自定义的标签，这些标签在HTML中是没有的
+			
+			全局化就是在构造器的外部用Vue.component来注册,在任何VUE作用域中都有效
+			
+			局部注册的组件只能在组件注册的作用域里进行使用，其他作用域使用无效。
+			*/
 		</script>
 	</body>
 </html>

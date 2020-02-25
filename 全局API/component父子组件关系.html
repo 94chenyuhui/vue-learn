@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<chenyuhui></chenyuhui>
+		</div>
+		<script type="text/javascript">
+			
+			/*
+			构造器外部写局部注册组件
+			
+			如果组件代码量很大，会影响构造器的可读性，造成拖拉和错误。
+			
+			我们把组件编写的代码放到构造器外部或者说单独文件。
+			
+			我们需要先声明一个对象,对象里就是组件的内容。
+			
+			声明好对象后在构造器里引用就可以了
+			*/
+			var menglijuan={//子组件
+				template:`
+				<div style="color:green">这是子组件</div>
+				`
+			}
+			
+			
+			var chenyuhui={//父组件
+				template:`
+				<div>
+				<p style="color:red">这是父组件</p>
+				<menglijuan></menglijuan>
+				</div>
+				`,
+				components:{//把子组件嵌套进去
+					"menglijuan":menglijuan
+				}
+			}
+			var app=new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				components:{
+					"chenyuhui":chenyuhui
+				}
+			})
+			
+			/*
+			在实际开发中我们经常会遇到在一个自定义组件中要使用其他自定义组件，这就需要组件嵌套
+			
+			
+			
+			*/
+		</script>
+	</body>
+</html>

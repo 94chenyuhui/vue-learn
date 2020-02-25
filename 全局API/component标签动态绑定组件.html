@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			在component里面使用 v-bind: is，绑定who的值，根据who的值不同，调用不同的组件。
+			<br />
+			可以实现动态组件的效果。根据:is=""的值，来决定哪个组件被渲染
+			<component v-bind:is="who"></component>
+			<button type="button" @click="bianHua">改变:is绑定的值</button>
+		</div>
+		<script type="text/javascript">
+			var zujian1={
+				template:`
+				<div style="color:red">我是组件1</div>
+				`
+			}
+			var zujian2={
+				template:`
+				<div style="color:green">我是组件2</div>
+				`
+			}
+			var zujian3={
+				template:`
+				<div style="color:pink">我是组件3</div>
+				`
+			}
+			var app=new Vue({
+				el:"#app",
+				data:{
+					who:"zujian1"
+				},
+				components:{
+					"zujian1":zujian1,
+					"zujian2":zujian2,
+					"zujian3":zujian3
+				},
+				methods:{
+					bianHua:function(){
+						if(this.who=="zujian1"){
+							this.who="zujian2";
+						}else if(this.who=="zujian2"){
+							this.who="zujian3"
+						}else{
+							this.who="zujian1"
+						}
+					}
+				}
+			});
+			/*
+			component标签是Vue框架自定义的标签，它的用途就是可以动态绑定我们的组件，根据数据的不同更换不同的组件。
+			*/
+		</script>
+	</body>
+</html>
