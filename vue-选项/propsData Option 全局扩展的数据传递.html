@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../vue.min.js">
+			
+		</script>
+	</head>
+	<body>
+		<chenyuhui></chenyuhui>
+		<script type="text/javascript">
+			var chenyuhui_a=Vue.extend({
+				template:`<p style="color:red">你好，我是{{name}}--获得{{a}}</p>`,
+				data:function(){
+					return{
+						name:"陈宇辉"
+					}
+				},
+				props:["a"]
+			});
+			new chenyuhui_a({propsData:{a:"100分"}}).$mount("chenyuhui")
+			/*
+			propsData 不是和属性有关，他用在全局扩展时是进行传递数据
+			propsData在实际开发中我们使用的并不多，我们在后边会学到Vuex的应用，他的作用就是在单页应用中保持状态和数据的。
+			*/
+		</script>
+	</body>
+</html>

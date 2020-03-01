@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="cctv">
+			<p>今日温度：{{wendu}}</p>
+			<p>穿衣建议：{{chuanyi}}</p>
+			<p><button type="button" @click="add">升温</button><button type="button" @click="dpp">降温</button></p>
+		</div>
+		<script type="text/javascript">
+			var jianyi=["棉服羽绒服","夹克长裙","T恤短袖"]
+			var cctv=new Vue({
+				el:"#cctv",
+				data:{
+					wendu:14,
+					chuanyi:"夹克长裙"
+				},
+				methods:{
+					add:function(){
+						this.wendu+=5
+					},
+					dpp:function(){
+						this.wendu-=5
+					}
+				},
+				// watch:{
+				// 	wendu:function(newVal,oldVal){
+				// 		if(newVal>=26){
+				// 			this.chuanyi=jianyi[2]
+				// 		}else if(newVal<26&&newVal>=0){
+				// 			this.chuanyi=jianyi[1]
+				// 		}else{
+				// 			this.chuanyi=jianyi[0]
+				// 		}
+				// 	}
+					
+				// }
+			});
+			//实例属性写watch监控,构造器的外部
+			cctv.$watch('wendu',function(newVal,oldVal){
+				if(newVal>=26){
+					this.chuanyi=jianyi[2];
+					console.log("更新后的新值"+newVal+"--"+"更新后的旧值"+oldVal)
+				}else if(newVal<26&&newVal>=0){
+					this.chuanyi=jianyi[1]
+					console.log("更新后的新值"+newVal+"--"+"更新后的旧值"+oldVal)
+				}else{
+					this.chuanyi=jianyi[0]
+					console.log("更新后的新值"+newVal+"--"+"更新后的旧值"+oldVal)
+				}
+			})
+			
+			/*
+			数据变化的监控经常使用watch
+			作用于监控数据的变化
+			
+			watch的两个参数
+			app.$watch('xxx',function(newVal,oldVal){})
+			newVal是更新后的值,oldVal是旧值
+			*/
+		</script>
+	</body>
+</html>

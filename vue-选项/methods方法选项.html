@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{a}}</p>
+			<button type="button" @click="add(2,$event)">加加</button>
+			<!-- 在实际开发中经常需要把某个按钮封装成组件，然后反复使用，
+			如何让组件调用构造器里的方法，而不是组件里的方法。就需要用到我们的.native修饰器了。 -->
+			<p><btn @click.native="add(3)"></btn></p>
+		</div>
+		<button type="button" onclick="app.add(9)">外部调用构造器里的方法</button>
+		<script type="text/javascript">
+			var btn={
+				template:`<button>组件加加</button>`
+			}
+			var app=new Vue({
+				el:"#app",
+				data:{
+					a:1,
+				},
+				methods:{
+					add:function(num,event){
+						if(num!=""){
+							this.a=num+this.a;
+						}else{
+							this.a++
+						}
+						console.log(event)
+					}
+				},
+				components:{
+					"btn":btn
+				}
+			})
+			/*
+			methods中参数的传递
+			使用方法和正常的javascript传递参数的方法一样，分为两部：
+			
+			在methods的方法中进行声明，比如我们给add方法加上一个num参数，就要写出add:function(num){}.
+			调用方法时直接传递，比如我们要传递2这个参数，我们在button上就直接可以写。<button @click=”add(2)”></button>.
+			
+			methods中的$event参数
+			传递的$event参数都是关于你点击鼠标的一些事件和属性
+			
+			native 给组件绑定构造器里的原生事件。
+			在实际开发中经常需要把某个按钮封装成组件，然后反复使用，如何让组件调用构造器里的方法，而不是组件里的方法。
+			就需要用到我们的.native修饰器了
+			
+			作用域外部调用构造器里的方法
+			这种不经常使用，如果你出现了这种情况，说明你的代码组织不够好。
+			<button onclick="app.add(4)" >外部调用构造器里的方法</button>
+			*/
+		</script>
+	</body>
+</html>

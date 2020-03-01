@@ -8,6 +8,7 @@
 		</script>
 	</head>
 	<body>
+		<h3>自定义无参数的标签</h3>
 		<chenyuhui></chenyuhui>
 		<div id="chenyuhui">
 			
@@ -27,10 +28,19 @@
 					}
 				}
 			});
+			//绑定到标签上
 			new chenyuhuis().$mount("chenyuhui");//绑定到HTML标签
 			new chenyuhuis().$mount("#chenyuhui");//绑定到ID
-			new chenyuhuis().$mount(".chenyuhui");//绑定到ID
+			new chenyuhuis().$mount(".chenyuhui");//绑定到class
 			
 		</script>
+		
+		/*
+			Vue.extend 返回的是一个“扩展实例构造器”,也就是预设了部分选项的Vue实例构造器。
+			经常服务于Vue.component用来生成组件，可以简单理解为当在模板中遇到该组件名称作为标签的自定义元素时，
+			会自动调用“扩展实例构造器”来生产组件实例，并挂载到自定义元素上。
+			
+			$mount()挂载到标签，ID，class
+		*/
 	</body>
 </html>

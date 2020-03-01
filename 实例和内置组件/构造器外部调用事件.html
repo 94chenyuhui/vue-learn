@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{name}}<p>{{val}}</p>
+			<p><button type="button" @click="add()">增加</button></p>
+		</div>
+		<p><button type="button" onclick="tianjia()">构造器外部添加事件</button></p>
+		<p><button type="button" onclick="reduceOnce()">只执行一次的事件</button></p>
+		<p><button type="button" onclick="off()">$off关闭事件</button></p>
+		<script type="text/javascript">
+			let app=new Vue({
+				el:"#app",
+				data:{
+					name:1,
+					val:"方法"
+				},
+				methods:{
+					add:function(){
+						this.name++
+					}
+				}
+			});
+			//$on 在构造器外部添加事件
+			app.$on('tianjia',function(){
+				this.val='在构造器外部添加事件';
+				this.name++;
+			});
+			function tianjia(){
+				app.$emit('tianjia')//如果按钮在作用域外部，可以利用$emit来执行
+			}
+			//$once执行一次的事件
+			app.$once('reduceOnce',function(){
+			    this.val="只执行一次的事件"
+			    this.name++;
+			
+			});
+			function reduceOnce(){
+				app.$emit('reduceOnce')
+			}
+			//$off关闭事件
+			function off(){
+				app.$off('tianjia');
+			}
+			
+			//$emit()触发当前实例上的事件
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../jquery.min.js">
+			
+		</script>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:"#app",
+				data:{
+					message:"我是VUE"
+				},
+				mounted:function(){//在VUE中使用jquery
+					$('#app').html('我是jQuery!')
+				},
+				methods:{//实例调用自定义方法
+					add:function(){
+						alert("调用了构造器内部的add方法")
+					}
+				}
+			})
+			app.add();
+		</script>
+	</body>
+</html>

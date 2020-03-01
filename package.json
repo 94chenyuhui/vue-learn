@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/94chenyuhui/vue-learn/issues"
   },
-  "homepage": "https://github.com/94chenyuhui/vue-learn#readme"
+  "homepage": "https://github.com/94chenyuhui/vue-learn#readme",
+  "devDependencies": {
+    "vue-router": "^3.1.6"
+  }
 }

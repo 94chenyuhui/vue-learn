@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="aaa">
+
+		</div>
+		<p><button type="button" onclick="xiezai()">卸载VUE</button></p>
+		<p><button type="button" onclick="shuaxin()">刷新</button></p>
+		<p><button type="button" onclick="tick()">修改数据后调用</button></p>
+		<script type="text/javascript">
+			let chenyuhui = Vue.extend({
+				template: `<p>{{message}}</p>`,
+				data: function() {
+					return {
+						message: "挂载我们的扩展实例"
+					}
+				},
+				created: function() {
+					console.log('挂载 创建完成');
+				},
+				destroyed: function() {
+					console.log('$destroy销毁之后')
+				},
+				updated: function() {
+					console.log('$forceUpdated 被更新后');
+				},
+			})
+			
+			//$mount方法是用来挂载我们的扩展的
+			let vm = new chenyuhui().$mount("#aaa");
+
+			//卸载后调用
+			function xiezai() { //卸载当前元素的VUE事件
+				vm.$destroy(); //$destroy()后边必须要有括号，没有括号是无用的。
+			}
+			//更新后调用
+			function shuaxin() {
+				vm.$forceUpdate()
+			}
+			//当Vue构造器里的data值被修改完成后会调用这个方法，也相当于一个钩子函数吧，和构造器里的updated生命周期很像。
+			function tick() {
+				vm.message = "$nextTick数据修改方法";
+				vm.$nextTick(function() {
+					console.log("数据修改完成后我被调用了")
+				})
+			}
+		</script>
+	</body>
+</html>

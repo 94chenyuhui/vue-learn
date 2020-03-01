@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<script type="text/javascript" src="../vue.min.js">
-			
+
 		</script>
 	</head>
 	<body>
@@ -14,23 +14,27 @@
 			<p>{{message}}</p>
 			<p>好好学习天天向上</p>
 		</div>
-		 <template id="demo2"><h3 style="color:red">二。我是template标签模板</h3></template>
+		<template id="demo2">//注意 template 模板 一定要用一个div把所有子元素包裹起来
+			<div>
+			<h3 style="color:red">二。我是template标签模板</h3>	
+			</div>
+		</template>
 		<script type="x-template" id="demo3">
 			<h3 style="color:red">三.我是script标签模板</h3>
-		</script> 
+		</script>
 		<script type="text/javascript">
-			var app=new Vue({
-				el:"#app",
-				data:{
-					message:"模板"
+			var app = new Vue({
+				el: "#app",
+				data: {
+					message: "模板"
 				},
-				template:"#demo3",
+				template: "#demo2",
 				/*`
 				<h3 style="color:red">一。我是选项模板</h3>
 				`*/
 			})
-			</script>
-			<!-- 一、直接写在选项里的模板
+		</script>
+		<!-- 一、直接写在选项里的模板
 			直接在构造器里的template选项后边编写。这种写法比较直观，但是如果模板html代码太多，不建议这么写。
 			
 			javascript代码：
